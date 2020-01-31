@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
   
   def index
+    if params[:id] 
+      @group = Group.find(params[:id])
+      @groups = @group.users.includes(:user)
+    end
   end
   
   def new
